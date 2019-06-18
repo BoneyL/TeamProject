@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title></title>
+<meta charset="UTF-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.theme.min.css}">
+<script
+	th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js}"></script>
+<script>
+	$(document).ready(function() {
+		$('#btnRemove').on('click', function() {
+		}
+	}
+	
+</script>
+
+</head>
+<body>
+	<h1>문서양식</h1>
+	<div>공통양식</div>
+	<ul>
+	<li><a href="/documentFormList?documentFormCategory=인사">인사</a></li>
+	<li><a href="/documentFormList?documentFormCategory=재무">재무</a></li>
+	<li><a href="/documentFormList?documentFormCategory=보고">보고</a></li>
+	<li><a href="/documentFormList?documentFormCategory=업무">업무</a></li>
+	<li><a href="/documentFormList?documentFormCategory=총무">총무</a></li>	
+	</ul>
+	<table>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

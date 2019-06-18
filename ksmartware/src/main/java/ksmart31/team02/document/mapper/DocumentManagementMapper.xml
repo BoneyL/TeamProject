@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ksmart31.team02.document.mapper.DocumentFormMapper">
+	<!-- 관리자 문서관리 전체리스트 -->
+	<select id="selectDocuemntApprovalList"
+			resultType="ksmart31.team02.document.vo.ApprovalDocument">
+			SELECT
+				draft_document_status
+				approval_document_file_save_name
+				member_name
+				document_date
+				final_approval_member_name
+				final_approval_date
+			FROM approval_document
+			ORDER BY document_date DESC
+	</select>
+</mapper>
