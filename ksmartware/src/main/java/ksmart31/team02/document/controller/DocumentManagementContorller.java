@@ -1,6 +1,7 @@
 package ksmart31.team02.document.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +18,16 @@ public class DocumentManagementContorller {
 	DocumentManagementService documentManagementService;
 	
 	@GetMapping(value = "/documentApprovalManagement")
-	public String documentApprovalManagement(Model model, @RequestParam(value = "approvalDocumentNo")String approvalDocumentNo) {
+	public String documentApprovalManagement(Model model, @RequestParam(value = "approvalDocumentNo")String approvalDocumentcode) {
 		System.out.println("(C)documentApprovalManagement");
 		List<ApprovalDocument> approvalDocumentList = null;
-		if(approvalDocumentNo != null) {
-			approvalDocumentList = documentManagementService.documentApprovalDetail(approvalDocumentNo);
+		Map<String, Object> approvalDocumentDetailMap = null;
+		if(approvalDocumentcode != null) {
+			approvalDocumentDetailMap = documentManagementService.documentApprovalDetail(approvalDocumentcode);
 		}
 		approvalDocumentList = documentManagementService.documentApprovalList();
 		model.addAttribute("approvalDocumentList", approvalDocumentList);
+		model.addAttribute("approvalDocumentDetailMap", approvalDocumentDetailMap);
 		return "/documentApprovalManagement";				
 	}
 

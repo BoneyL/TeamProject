@@ -16,4 +16,13 @@
 			FROM approval_document
 			ORDER BY document_date DESC
 	</select>
+		<!-- 관리자 문서관리 상세정보 확인을위한 문서양식 select -->
+	<select id="selectDocumentFormTitleByApprovalDocumentCode"
+			parameterType="String"
+			resultType="String">
+			SELECT
+				document_form_title
+			FROM approval_document
+			WHERE approval_document_code = #{approvalDocumentCode}
+	</select>
 </mapper>
