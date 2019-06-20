@@ -1,5 +1,6 @@
-package ksmart31.team02.document.vo;
+package ksmart31.team02.document.domain;
 
+/*구매요청서*/
 public class PurchaseRequisition {
 	private String memberId;
 	private String memberPositionName;
@@ -88,6 +89,8 @@ public class PurchaseRequisition {
 				+ ", purchaseRequisitionItemPrice=" + purchaseRequisitionItemPrice + ", purchaseRequisitionTotalPrice="
 				+ purchaseRequisitionTotalPrice + ", purchaseRequisitionEtc=" + purchaseRequisitionEtc + "]";
 	}
+	
+	
 	
 	
 }

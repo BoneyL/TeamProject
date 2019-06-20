@@ -2,27 +2,92 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ksmart31.team02.document.mapper.DocumentFormMapper">
+<mapper
+	namespace="ksmart31.team02.document.mapper.DocumentFormMapper">
 	<!-- 관리자 문서관리 전체리스트 -->
 	<select id="selectDocuemntApprovalList"
-			resultType="ksmart31.team02.document.vo.ApprovalDocument">
-			SELECT
-				draft_document_status
-				approval_document_file_save_name
-				member_name
-				document_date
-				final_approval_member_name
-				final_approval_date
-			FROM approval_document
-			ORDER BY document_date DESC
+		resultType="ksmart31.team02.document.domain.ApprovalDocument">
+		SELECT
+		draft_document_status AS draftDocumentStatus,
+		approval_document_file_save_name AS approvalDocumentFileSaveName,
+		member_name AS memberName,
+		document_date AS documentDate,
+		final_approval_member_name AS finalApprovalMemberName,
+		final_approval_date AS finalApprovalDate,
+		FROM approval_document 
+		ORDER BY document_date DESC
 	</select>
-		<!-- 관리자 문서관리 상세정보 확인을위한 문서양식 select -->
+	<!-- 관리자 문서관리 상세정보 확인을위한 문서양식 select -->
 	<select id="selectDocumentFormTitleByApprovalDocumentCode"
-			parameterType="String"
-			resultType="String">
-			SELECT
-				document_form_title
-			FROM approval_document
-			WHERE approval_document_code = #{approvalDocumentCode}
+		parameterType="String" resultType="String">
+		SELECT
+		document_form_title
+		FROM approval_document
+		WHERE approval_document_code = #{approvalDocumentCode}
+	</select>
+	<select id="selectPurchaseRequisitionDetail"
+		parameterType="String"
+		resultType="ksmart31.team02.document.domain.PurchaseRequisition">
+		SELECT 
+		pr.member_id AS memberId,
+		pr.member_position_name AS memberPositionName,
+		pr.purchase_requisition_date AS purchaseRequisitionDate, 
+		pr.purchase_requisition_pay_day AS purchaseRequisitionPayDay,
+		pr.purchase_requisition_total_price ASpurchaseRequisitionTotalPrice,
+		pr.purchase_requisition_item_category AS purchaseRequisitionItemCategory,
+		pr.purchase_requisition_item AS purchaseRequisitionItem,
+		pr.purchase_requisition_item_unit AS purchaseRequisitionItemUnit,
+		pr.purchase_requisition_item_count AS purchaseRequisitionItemCount,
+		pr.purchase_requisition_item_price ASpurchaseRequisitionItemPrice,
+		pr.purchase_requisition_etc AS purchaseRequisitionEtc
+		FROM purchase_requisition AS pr
+		JOIN  approval_document AS ad
+		ON pr.draft_document_code = ad.draft_document_code;
+	</select>
+	<select id="selectDisbursementDocumentDetail"
+		parameterType="String"
+		resultType="ksmart31.team02.document.domain.DisbursementDocument">
+		SELECT
+		dd.disbursement_document_name AS ,
+		ad.department_name AS,
+		dd.member_name AS,
+		dd.disbursement_document_account AS,
+		dd.disbursement_document_terms_of_payment AS,
+		dd.disbursement_document_date AS,
+		dd.disbursement_document_request_date AS,
+		dd.disbursement_document_account AS,
+		dd.disbursement_document_account_number AS,
+		dd.disbursement_document_expense_date AS,
+		dd.disbursement_document_contents AS,
+		dd.disbursement_document_customer AS,
+		dd.disbursement_document_price AS,
+		dd.disbursement_document_methods_of_payment AS,
+		dd.disbursement_document_etc AS,
+		dd.disbursement_document_evidence AS,
+		FROM disbursement_document AS dd
+		JOIN  approval_document AS ad
+		ON dd.draft_document_code = ad.draft_document_code;
+	</select>
+	<select id="selectLeaveApplicationDetail" parameterType="String"
+		resultType="ksmart31.team02.document.domain.LeaveApplication">
+		SELECT
+		document_form_title
+		FROM approval_document
+		WHERE approval_document_code = #{approvalDocumentCode}
+	</select>
+	<select id="selectProjectReportDetail" parameterType="String"
+		resultType="ksmart31.team02.document.domain.ProjectReport">
+		SELECT
+		document_form_title
+		FROM approval_document
+		WHERE approval_document_code = #{approvalDocumentCode}
+	</select>
+	<select id="selectProjectDisbursementDetail"
+		parameterType="String"
+		resultType="ksmart31.team02.document.domain.ProjectDisbursement">
+		SELECT
+		document_form_title
+		FROM approval_document
+		WHERE approval_document_code = #{approvalDocumentCode}
 	</select>
 </mapper>

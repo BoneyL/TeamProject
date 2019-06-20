@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ksmart31.team02.document.domain.ApprovalDocument;
 import ksmart31.team02.document.service.DocumentManagementService;
-import ksmart31.team02.document.vo.ApprovalDocument;
 
 @Controller
 public class DocumentManagementContorller {
@@ -28,7 +28,7 @@ public class DocumentManagementContorller {
 		approvalDocumentList = documentManagementService.documentApprovalList();
 		model.addAttribute("approvalDocumentList", approvalDocumentList);
 		model.addAttribute("approvalDocumentDetailMap", approvalDocumentDetailMap);
-		return "/documentApprovalManagement";				
+		return "/documentApprovalManagement";			
 	}
 
 }
